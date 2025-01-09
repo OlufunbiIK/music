@@ -1,0 +1,12 @@
+POST http://localhost:3000/playlists
+Content-Type: application/json
+{
+  "name": "The Original Playlist",
+  "songs": [6],
+  "user": 1
+}
+
+
+GET http://localhost:3000/songs
+PUT http://localhost:3000/songs/1
+PATCH http://localhost:3000/songs/2

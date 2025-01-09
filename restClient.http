@@ -1,0 +1,12 @@
+POST http://localhost:3000/songs
+Content-Type: application/json
+{
+  "title": "Winning",
+  "artist": ["Mr.P"],
+  "releasedDate": "2024-11-08",
+  "duration": "04:36"
+}
+
+GET http://localhost:3000/songs
+PUT http://localhost:3000/songs/1
+PATCH http://localhost:3000/songs/2

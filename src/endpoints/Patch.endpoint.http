@@ -1,0 +1,11 @@
+PATCH http://localhost:3000/songs/6
+Content-Type: application/json
+{
+  "title": "Living Water",
+  "artist": [
+    "Faith Joseph"
+  ],
+  "releasedDate": "2022-01-04",
+  "duration": "05:00",
+  "lyrics": "Living water, let me drink from you ... "
+}

@@ -1,0 +1,95 @@
+POST http://localhost:3001/songs
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzYzNDE3MTgsImV4cCI6MTczNjUxNDUxOH0.sd7KlCvC_RvTmuFeV631iCPqK7g6RHquglL6co2Fvb4
+{
+  "title": "Loyalty",
+  "artist": [10],
+  "releasedDate": "2021-05-28",
+  "duration": "02:49",
+  "lyrics": "She no want my money, she wants my loyalty"
+}
+
+
+
+
+
+
+
+
+
+
+
+POST http://localhost:3001/users
+Content-Type: application/json
+{
+  "name": "Ajebo Hustlers",
+  "email":"ajebohustlers@gmail.com",
+  "password": "ajebo123",
+  "playlists": ["playlist 1"]
+}
+
+POST http://localhost:3001/artist
+Content-Type: application/json
+
+{
+  "name": "Ajebo Hustlers",
+  "genre": "Wicked",
+  "userId": 11
+}
+
+
+POST http://localhost:3000/album
+Content-Type: application/json
+
+{
+  "title": "The Best Album",
+  "releaseDate": "2024-12-31",
+  "genre": "Rock"
+}
+
+
+
+
+POST http://localhost:3000/playlists
+Content-Type: application/json
+{
+  "name": "Spirit Chant",
+  "songs": [9],
+  "user": 2
+}
+
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "Debby Klint",
+  "email": "debbyklint@example.com",
+  "password": "admin123"
+}
+
+POST http://localhost:3001/auth/validate-2fa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzYzNDE3MTgsImV4cCI6MTczNjUxNDUxOH0.sd7KlCvC_RvTmuFeV631iCPqK7g6RHquglL6co2Fvb4
+
+{
+  "token": "926042"
+}
+
+
+
+
+
+
+
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+  "email": "uyotimothy@gmail.com",
+  "password": "uyotim123"
+}
+
+# artsist token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzYzNDE3MTgsImV4cCI6MTczNjUxNDUxOH0.sd7KlCvC_RvTmuFeV631iCPqK7g6RHquglL6co2Fvb4
+GET http://localhost:3001/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzYzNDE3MTgsImV4cCI6MTczNjUxNDUxOH0.sd7KlCvC_RvTmuFeV631iCPqK7g6RHquglL6co2Fvb4

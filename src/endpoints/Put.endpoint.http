@@ -1,0 +1,10 @@
+PUT http://localhost:3000/songs/9
+Content-Type: application/json
+
+{
+  "title": "Spirit chants",
+  "artist": ["Kaestrings"],
+  "releasedDate": "2023-06-11",
+  "duration": "10:00",
+  "lyrics": "I can see the Lord is calling me into deeper experience with him .."
+}

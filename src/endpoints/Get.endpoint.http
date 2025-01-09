@@ -1,0 +1,25 @@
+
+GET http://localhost:3000/songs/?page=1&limit=2
+
+
+GET http://localhost:3001/songs/6
+
+
+
+
+//access token
+ "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlYmJ5a2xpbnRAZXhhbXBsZS5jb20iLCJzdWIiOjEwLCJpYXQiOjE3MzYwODQwMjcsImV4cCI6MTczNjE3MDQyN30.qruBHwNDhNkIO-iQJhvSu_w0AopcFvkDEp1KY8EKaHE"
+
+GET http://localhost:3001/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlYmJ5a2xpbnRAZXhhbXBsZS5jb20iLCJzdWIiOjEwLCJpYXQiOjE3MzYyNDY0NjQsImV4cCI6MTczNjMzMjg2NH0.QublKCOk4mb5vOMLlb7uVadIxfr3WdQ8S7zdQPdax6g
+
+
+
+
+
+
+
+
+GET http://localhost:3001/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlYmJ5a2xpbnRAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjEwLCJpYXQiOjE3MzY0Mjc4NDksImV4cCI6MTczNjYwMDY0OX0.OCuziEm-ujPUjJCv4HShQkbxWD26zao0sB0tKAbEuIc
+
