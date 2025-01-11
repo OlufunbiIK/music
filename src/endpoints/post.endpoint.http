@@ -59,23 +59,39 @@ Content-Type: application/json
 }
 
 
-POST http://localhost:3000/auth/signup
+POST http://localhost:3001/auth/signup
 Content-Type: application/json
 
 {
-  "username": "Debby Klint",
+  "username": "Beevol Lee",
+  "email": "beevolee@example.com",
+  "password": "beevolee123"
+}
+
+
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+  "email": "debbyklint@example.com",
+  "password": "admin123"
+}
+
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
   "email": "debbyklint@example.com",
   "password": "admin123"
 }
 
 POST http://localhost:3001/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzY0OTg3MTAsImV4cCI6MTczNjY3MTUxMH0.q7-z2NUzN4uN4yqN2LwZFu6eqbJP452qv3lHRN1QxA0
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzYzNDE3MTgsImV4cCI6MTczNjUxNDUxOH0.sd7KlCvC_RvTmuFeV631iCPqK7g6RHquglL6co2Fvb4
 
 {
-  "token": "926042"
+  "token":"312264"
 }
-
 
 
 

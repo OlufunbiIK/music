@@ -8,6 +8,7 @@ import { User } from './entities/user.entity';
 import { Repository, UpdateResult } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { LoginDto } from 'src/auth/dto/loginDto';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -20,6 +21,7 @@ export class UsersService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const salt = await bcrypt.genSalt(); //2
     createUserDto.password = await bcrypt.hash(createUserDto.password, salt); //3
+    createUserDto.apiKey = uuidv4();
 
     // Create a new user entity from the DTO
     const newUser = await this.userRepository.save(createUserDto); //4
@@ -68,6 +70,16 @@ export class UsersService {
         id: userId,
       },
       { twoFAsecret: secret, enable2FA: true },
+    );
+  }
+
+  async disable2FA(userId: number): Promise<UpdateResult> {
+    return this.userRepository.update(
+      { id: userId },
+      {
+        enable2FA: false,
+        twoFAsecret: null,
+      },
     );
   }
 

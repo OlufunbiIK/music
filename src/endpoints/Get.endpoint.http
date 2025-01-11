@@ -21,5 +21,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlYmJ5a
 
 
 GET http://localhost:3001/auth/enable-2fa
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlYmJ5a2xpbnRAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjEwLCJpYXQiOjE3MzY0Mjc4NDksImV4cCI6MTczNjYwMDY0OX0.OCuziEm-ujPUjJCv4HShQkbxWD26zao0sB0tKAbEuIc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzY0OTg3MTAsImV4cCI6MTczNjY3MTUxMH0.q7-z2NUzN4uN4yqN2LwZFu6eqbJP452qv3lHRN1QxA0
 
+{
+  "email": "uyotimothy@gmail.com",
+  "password": "uyotim123"
+}
+
+GET http://localhost:3001/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW90aHlAZ21haWwuY29tIiwidXNlcklkIjoxMSwiYXJ0aXN0SWQiOjEwLCJpYXQiOjE3MzY0OTg3MTAsImV4cCI6MTczNjY3MTUxMH0.q7-z2NUzN4uN4yqN2LwZFu6eqbJP452qv3lHRN1QxA0
+
+{
+  "email": "uyotimothy@gmail.com",
+  "password": "uyotim123"
+}
