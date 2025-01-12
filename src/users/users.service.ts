@@ -90,4 +90,8 @@ export class UsersService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
+  async findByApiKey(apiKey: string): Promise<User> {
+    return await this.userRepository.findOneBy({ apiKey });
+  }
 }

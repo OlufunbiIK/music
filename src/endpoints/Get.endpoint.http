@@ -35,3 +35,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3Rpb
   "email": "uyotimothy@gmail.com",
   "password": "uyotim123"
 }
+
+
+
+
+
+//this request is for the api key for users that gets signed in 
+GET http://localhost:3001/auth/profile
+Authorization: Bearer d4081655-0d32-44a1-8743-fc58924b87e1
