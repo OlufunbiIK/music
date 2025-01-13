@@ -1,6 +1,14 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+  RequestTimeoutException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -16,18 +24,61 @@ export class UsersService {
     @InjectRepository(User) private readonly userRepository: Repository<User>, //1
   ) {}
 
+  //The create User method
   //Part for sign up authentication
   // Create a new user
+  //Part for hashing password
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const salt = await bcrypt.genSalt(); //2
-    createUserDto.password = await bcrypt.hash(createUserDto.password, salt); //3
-    createUserDto.apiKey = uuidv4();
+    let existingUser = undefined;
 
-    // Create a new user entity from the DTO
-    const newUser = await this.userRepository.save(createUserDto); //4
-    delete newUser.password; //5
-    return newUser; //6
-    // return await this.userRepository.save(newUser);
+    // Check if user already exists in the database
+    try {
+      existingUser = await this.userRepository.findOne({
+        where: { email: createUserDto.email },
+      });
+
+      if (existingUser) {
+        throw new ConflictException('A user with this email already exists.');
+      }
+    } catch (error) {
+      if (error instanceof ConflictException) {
+        throw error; // Rethrow conflict error
+      }
+      // Handle database connection issues or other unexpected errors
+      throw new RequestTimeoutException(
+        'Unable to process this request, please try again later.',
+        {
+          description: 'Error connecting to the database',
+          cause: 'Database might be unreachable or under heavy load.',
+        },
+      );
+    }
+
+    try {
+      // Hash password and generate API key
+      const salt = await bcrypt.genSalt();
+      createUserDto.password = await bcrypt.hash(createUserDto.password, salt);
+      createUserDto.apiKey = uuidv4();
+
+      // Create a new user entity from the DTO
+      const newUser = await this.userRepository.save(createUserDto);
+      delete newUser.password; // Ensure password is not returned
+      return newUser; // Return the created user
+    } catch (error) {
+      // Handle potential errors during user creation
+      if (error.code === '23505') {
+        // Handle unique constraint violation (if using PostgreSQL)
+        throw new ConflictException('A user with this email already exists.');
+      }
+
+      throw new InternalServerErrorException(
+        'An error occurred while creating the user. Please try again later.',
+        {
+          description: 'Error during user creation in the database.',
+          cause: error.message,
+        },
+      );
+    }
   }
 
   findAll() {
@@ -93,5 +144,15 @@ export class UsersService {
 
   async findByApiKey(apiKey: string): Promise<User> {
     return await this.userRepository.findOneBy({ apiKey });
+  }
+
+  async deleteUser() {
+    throw new HttpException(
+      {
+        status: HttpStatus.MOVED_PERMANENTLY,
+        error: 'error: Could not delete',
+      },
+      HttpStatus.MOVED_PERMANENTLY,
+    );
   }
 }

@@ -22,11 +22,24 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV5b3RpbW
 POST http://localhost:3001/users
 Content-Type: application/json
 {
-  "name": "Ajebo Hustlers",
-  "email":"ajebohustlers@gmail.com",
-  "password": "ajebo123",
-  "playlists": ["playlist 1"]
+  "username": "Alhaji Techno",
+  "email":"alhajitechno@gmail.com",
+  "password": "alhajitechno123",
+  "playlists": ["playlist 2"]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 POST http://localhost:3001/artist
 Content-Type: application/json

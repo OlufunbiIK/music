@@ -34,7 +34,7 @@ export class AuthService {
 
     if (passwordMatched) {
       //3.
-      delete user.password; //4,
+      delete user.password; //4,//do not return the password
 
       const payload: payloadType = { email: user.email, userId: user.id };
       const artist = await this.artistService.findArtist(user.id); //5.
