@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach", // A descriptive name
+      "type": "node", // The type of debugger
+      "request": "attach", // We want to attach to a running process
+      "port": 9229, // The port your NestJS app is running on for debugging
+      "skipFiles": [["<node_internals>/**"]]
+    }
+  ]
+}

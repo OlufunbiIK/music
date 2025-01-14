@@ -41,6 +41,9 @@ export class User {
   @Column({ nullable: true })
   apiKey: string;
 
+  @Column()
+  phone: string;
+
   // @OneToOne(() => User)
   // @JoinColumn()
   // user: User;
