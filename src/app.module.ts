@@ -28,20 +28,21 @@ import { Song } from './songs/entities/song.entity';
 import { DataSource } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
 import { dataSourceOptions } from 'data-source';
+import { SeedModule } from './seed/seed.module';
 
 const devConfig = { port: 3001 };
 const proConfig = { port: 3001 };
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      //   type: 'postgres', // Set to PostgreSQL
-      //   host: 'localhost', // Your PostgreSQL server
-      //   port: 5432, // Default PostgreSQL port
-      //   username: 'postgres',
-      //   password: 'olufunbi',
-      //   database: 'postgres',
-      //   entities: [Playlist, User, Artist, Album, Song], // Include your entities
-      //   synchronize: true, // Set to false in production to avoid data loss
+      type: 'postgres', // Set to PostgreSQL
+      host: 'localhost', // Your PostgreSQL server
+      port: 5432, // Default PostgreSQL port
+      username: 'postgres',
+      password: 'olufunbi',
+      database: 'postgres',
+      entities: [Playlist, User, Artist, Album, Song], // Include your entities
+      synchronize: true, // Set to false in production to avoid data loss
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
     TypeOrmModule.forFeature([Playlist]),
@@ -51,6 +52,7 @@ const proConfig = { port: 3001 };
     AlbumModule,
     ArtistModule,
     AuthModule,
+    SeedModule,
   ],
   controllers: [AppController],
   providers: [

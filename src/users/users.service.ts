@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
   RequestTimeoutException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -146,13 +147,23 @@ export class UsersService {
     return await this.userRepository.findOneBy({ apiKey });
   }
 
-  async deleteUser() {
-    throw new HttpException(
-      {
-        status: HttpStatus.MOVED_PERMANENTLY,
-        error: 'error: Could not delete',
-      },
-      HttpStatus.MOVED_PERMANENTLY,
-    );
+  public async deleteUser(id: number) {
+    // throw new HttpException(
+    //   {
+    //     status: HttpStatus.TEMPORARY_REDIRECT,
+    //     error: `error:You are being temporarilty redirected`,
+    //   },
+    //   HttpStatus.TEMPORARY_REDIRECT
+    // );
+    const user = await this.userRepository.findOne({ where: { id } });
+
+    // If the user does not exist, throw an exception
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+
+    // Delete the user from the database
+    await this.userRepository.remove(user);
+    return `User with id ${id} has been successfully deleted`;
   }
 }
