@@ -3,7 +3,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcryptjs';
-import { LoginDto } from './dto/loginDto';
+import { LoginDto } from './Dto/loginDto';
 import { JwtService } from '@nestjs/jwt';
 import { ArtistService } from 'src/artist/artist.service';
 import { payloadType } from './types/types';

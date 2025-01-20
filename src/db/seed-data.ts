@@ -43,7 +43,7 @@ export const seedData = async (Manager: EntityManager): Promise<void> => {
 
       // Create and save the Artist with a reference to the user
       const artist = new Artist();
-      artist.name = faker.name.firstName();
+      artist.name = faker.person.firstName();
       artist.genre = faker.music.genre();
       artist.user = user; // Link the artist to the user
 
