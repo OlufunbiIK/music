@@ -18,8 +18,10 @@ import { Enable2FAType } from './types/auth-types';
 import { ValidateTokenDto } from './Dto/validate-token-Dto';
 import { UpdateResult } from 'typeorm';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
   constructor(
     private readonly userService: UsersService,
@@ -28,6 +30,11 @@ export class AuthController {
   ) {}
 
   @Post('signup')
+  @ApiOperation({ summary: 'Creates a new user' })
+  @ApiResponse({
+    status: 201,
+    description: 'The user will be returned in the response',
+  })
   signup(@Body() createUserdto: CreateUserDto): Promise<User> {
     return this.userService.create(createUserdto);
   }

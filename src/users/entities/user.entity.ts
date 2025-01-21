@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { Artist } from 'src/artist/entities/artist.entity';
 import { Playlist } from 'src/playlists/entities/playlist.entity';
@@ -16,17 +17,21 @@ export class User {
   id: number;
 
   @Column()
+  @ApiProperty({ description: 'Enter username' })
   username: string;
 
   @Column({ unique: true })
+  @ApiProperty({ description: 'Uique email address' })
   email: string;
 
   @Column()
   @Exclude() //excludes password from being selected
+  @ApiProperty({ description: 'Enter Secure password' })
   password: string;
 
   //one user to many playlists
   @OneToMany(() => Playlist, (playlist) => playlist.user)
+  @ApiProperty({ description: 'Enter user playlist' })
   playlists: Playlist[];
 
   @OneToOne(() => Artist, (artist) => artist.user)
